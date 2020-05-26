@@ -8,17 +8,22 @@ class TinderBot():
     def login(self):
         self.driver.get('https://tinder.com')
         print('opened tinder webpage')
-        sleep(2)
+        sleep(5)
         try:
             print('going for direct popup')
-            fb_btn=self.driver.find_element_by_xpath('//*[@id="modal-manager"]/div/div/div/div/div[3]/span/div[2]')
+            fb_btn=self.driver.find_element_by_xpath('//*[@id="modal-manager"]/div/div/div/div/div[3]/span/div[2]/button')
             fb_btn.click()
+            if len(self.driver.window_handles)==1:
+                self.driver.find_element_by_xpath('//*[@id="modal-manager"]/div/div/div[2]/button').click()
+                self.driver.find_element_by_xpath('//*[@id="content"]/div/div[1]/div/main/div[1]/div/div/header/div[1]/div[2]/div/button').click()
+                self.driver.find_element_by_xpath('//*[@id="modal-manager"]/div/div/div/div/div[3]/span/button').click()
+                self.driver.find_element_by_xpath('//*[@id="modal-manager"]/div/div/div/div/div[3]/span/div[3]/button').click()
             print('popup complete')
         except Exception:
             print('going for more option')
-            more_option_btn=self.driver.find_element_by_xpath('//*[@id="modal-manager"]/div/div/div/div/div[3]/span/button')
+            more_option_btn=self.driver.find_element_by_xpath("//button[contains(text(), 'More options')]")
             more_option_btn.click()
-            fb_btn=self.driver.find_element_by_xpath('//*[@id="modal-manager"]/div/div/div/div/div[3]/span/div[3]')
+            fb_btn=self.driver.find_element_by_xpath('//*[@id="modal-manager"]/div/div/div/div/div[3]/span/div[2]/button')
             fb_btn.click()
 
         print('waiting for popup to open')
@@ -38,7 +43,7 @@ class TinderBot():
         login_btn.click()
         self.driver.switch_to.window(base_window)
         print('logged into tinder')
-        sleep(20)
+        sleep(10)
         try:
             allow_location_btn= self.driver.find_element_by_xpath('//*[@id="modal-manager"]/div/div/div/div/div[3]/button[1]')
             allow_location_btn.click()
