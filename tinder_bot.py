@@ -10,30 +10,17 @@ class TinderBot():
         print('opened tinder webpage')
         sleep(2)
         try:
+            print('going for direct popup')
             fb_btn=self.driver.find_element_by_xpath('//*[@id="modal-manager"]/div/div/div/div/div[3]/span/div[2]')
             fb_btn.click()
-        except:
-            # more_option_btn=self.driver.find_element_by_name('MORE OPTIONS')
-            # print(more_option_btn, "befor xpath")
+            print('popup complete')
+        except Exception:
+            print('going for more option')
             more_option_btn=self.driver.find_element_by_xpath('//*[@id="modal-manager"]/div/div/div/div/div[3]/span/button')
             more_option_btn.click()
-            # fb_btn=self.driver.find_element_by_name('LOG IN WITH FACEBOOK')
-            # print(fb_btn)
             fb_btn=self.driver.find_element_by_xpath('//*[@id="modal-manager"]/div/div/div/div/div[3]/span/div[3]')
             fb_btn.click()
-            #  try:
-            #     print('tyring for fb login before more options')
-            #     fb_btn=self.driver.find_element_by_xpath('//*[@id="modal-manager"]/div/div/div/div/div[3]/span/div[2]')
-            #     print(fb_btn)
-            #     fb_btn.click()
-            # except:
-            #     print('after try now in expext')
-            #     more_option_btn=self.driver.find_element_by_xpath('//*[@id="modal-manager"]/div/div/div/div/div[3]/span/button')
-            #     print(more_option_btn)
-            #     more_option_btn.click()
-            #     print('trying for fb login after more option')
-            #     fb_btn=self.driver.find_element_by_xpath('//*[@id="modal-manager"]/div/div/div/div/div[3]/span/div[2]')
-            #     fb_btn.click()
+
         print('waiting for popup to open')
         while(len(self.driver.window_handles)==1):
             sleep(1)
