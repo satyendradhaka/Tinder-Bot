@@ -41,6 +41,9 @@ class TinderBot():
         print("entered password")
         login_btn=self.driver.find_element_by_xpath('//*[@id="u_0_0"]')
         login_btn.click()
+        print("waiting for tinder to login")
+        while len(self.driver.window_handles)==2:
+            sleep(1)
         self.driver.switch_to.window(base_window)
         print('logged into tinder')
         sleep(10)
@@ -78,6 +81,7 @@ class TinderBot():
         match_popup= self.driver.find_element_by_xpath('//*[@id="modal-manager-canvas"]/div/div/div[1]/div/div[3]/a')
         match_popup.click()
         print('removed match popup')
+    
 bot= TinderBot()
 bot.login()
 sleep(2)
