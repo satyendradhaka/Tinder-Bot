@@ -63,10 +63,21 @@ class TinderBot():
         dislike_btn.click()
         print('left swiped')
     def autoswipe(self):
+        count_like=0
+        count_dislike=0
+        from random import random
         while True:
             sleep(3)
             try:
-                self.like()
+                rand = random()
+                if rand< 0.75:
+                    self.like()
+                    count_like+=1
+                    print('right swiped', count_like)
+                else:
+                    self.dislike()
+                    count_dislike+=1
+                    print('left swiped', count_dislike)
             except Exception:
                 try:
                     self.close_popup()
