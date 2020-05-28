@@ -57,11 +57,9 @@ class TinderBot():
     def like(self):
         like_btn = self.driver.find_element_by_xpath('//*[@id="content"]/div/div[1]/div/main/div[1]/div/div/div[1]/div/div[2]/div[4]/button')
         like_btn.click()
-        print('right swiped')
     def dislike(self):
         dislike_btn=self.driver.find_element_by_xpath('//*[@id="content"]/div/div[1]/div/main/div[1]/div/div/div[1]/div/div[2]/div[2]/button')
         dislike_btn.click()
-        print('left swiped')
     def autoswipe(self):
         count_like=0
         count_dislike=0
@@ -95,5 +93,5 @@ class TinderBot():
     
 bot= TinderBot()
 bot.login()
-sleep(2)
+sleep(10)
 bot.autoswipe()
